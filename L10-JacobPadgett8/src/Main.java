@@ -9,6 +9,7 @@
 import java.util.Scanner;
 
 public class Main {
+	public static Scanner input;
 
 	/**
 	 * @param args
@@ -39,8 +40,8 @@ public class Main {
 //			filled = input.nextLine();
 			filled = filled.toLowerCase();
 			// input.nextLine(); // Needed to solve the ENTER value problem
-		} while ((filled != "y") && (filled != "n")); // End loop
-		if (filled == "y") {
+		} while (!filled.equals("y") && !filled.equals("n")); // End loop
+		if (filled.equals("y")) {
 			isFilled = true;
 		}
 
@@ -57,18 +58,29 @@ public class Main {
 	}
 
 	public static String getInput(String message) {
-		Scanner input = new Scanner(System.in);
 		System.out.print(message);
-		String teString = input.nextLine();
-		input.close();
-		return teString;
+		input = new Scanner(System.in);
+		String value = ""; // value to be returned
+		boolean valid = false; // initialize to not valid
+		try {
+			while (!valid) { // loop while an invalid value is entered
+				value = input.nextLine(); // get next line typed on keyboard
+				value = value.trim(); // trim off leading and trailing blanks
+				if (value.length() < 1) { // value is blank
+					System.out.printf("\nInvalid value: value cannot be blank");
+					continue;
+				}
+				break; // end the loop
+			}
+		} catch (Exception e) {
+			System.out.printf("Error reading input: " + e.getMessage());
+		}
+		return value; // return the value entered
 	}
 
 	public static double getDouble(String message) {
-		Scanner input = new Scanner(System.in);
-		System.out.print(message);
-		double test2 = input.nextDouble();
-		input.close();
+		String teString = getInput(message);
+		double test2 = Double.parseDouble(teString);
 		return test2;
 	}
 

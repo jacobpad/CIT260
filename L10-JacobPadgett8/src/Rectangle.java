@@ -88,8 +88,9 @@ public class Rectangle extends GeometricObject {
 		} else {
 			isFilledString = "not filled";
 		}
-		return = String("\n\nYour " + getColor() + " rectangle is " + width + " x " + length + " and is " + isFilledString
-				+ "\n\nWidth: " + width + "\nLength: " + length + "\nFilled: " + isFilledString + "\nColor: " + getColor()
-				+ "\nArea: " + getArea() + "\nPerimeter: " + getPerimeter());
+		return String.format(
+				"\n\nYour %s rectangle is %f x %f and is  %s \n\nWidth: %f\nLength: %f\nFilled: %s\nColor: %s\nArea: %f\nPerimeter: %f",
+				getColor(), width, length, isFilledString, width, length, isFilledString, getColor(), getArea(),
+				getPerimeter());
 	}
 }

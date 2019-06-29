@@ -27,13 +27,9 @@ public abstract class GeometricObject {
 		this.color = "";
 	}
 
-	public abstract double getPerimeter() {
-		
-	}
+	public abstract double getPerimeter();
 
-	public abstract double getArea() {
-		
-	}
+	public abstract double getArea();
 
 	/**
 	 * @return the isFilled
@@ -63,8 +59,6 @@ public abstract class GeometricObject {
 		this.color = color;
 	}
 
-	public abstract String toString() {
-		return "";
-	}
+	public abstract String toString();
 
 }
